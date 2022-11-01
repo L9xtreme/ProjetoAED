@@ -1,5 +1,5 @@
-#ifndef TRABALHOAED_UC_H
-#define TRABALHOAED_UC_H
+#ifndef PROJETOAED_UC_H
+#define PROJETOAED_UC_H
 #include <string>
 #include <vector>
 #include "Class.h"
@@ -17,5 +17,6 @@ class Uc {
         vector<Class> getClasses();
 
         void addClass(Class ucClass);
+        void insertClass(Class ucClass, int pos);
 };
 #endif

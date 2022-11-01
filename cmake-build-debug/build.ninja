@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: TRABALHOAED
+# Project: PROJETOAED
 # Configurations: Debug
 # =============================================================================
 
@@ -39,75 +39,89 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/TRABALHOAED/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target TRABALHOAED
+# Object build statements for EXECUTABLE target PROJETOAED
 
 
 #############################################
-# Order-only phony target for TRABALHOAED
+# Order-only phony target for PROJETOAED
 
-build cmake_object_order_depends_target_TRABALHOAED: phony || CMakeFiles/TRABALHOAED.dir
+build cmake_object_order_depends_target_PROJETOAED: phony || CMakeFiles/PROJETOAED.dir
 
-build CMakeFiles/TRABALHOAED.dir/src/Models/Student.cpp.obj: CXX_COMPILER__TRABALHOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/TRABALHOAED/src/Models/Student.cpp || cmake_object_order_depends_target_TRABALHOAED
-  DEP_FILE = CMakeFiles\TRABALHOAED.dir\src\Models\Student.cpp.obj.d
+build CMakeFiles/PROJETOAED.dir/src/Models/Student.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Models/Student.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Models\Student.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/src"
-  OBJECT_DIR = CMakeFiles\TRABALHOAED.dir
-  OBJECT_FILE_DIR = CMakeFiles\TRABALHOAED.dir\src\Models
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Models
 
-build CMakeFiles/TRABALHOAED.dir/main.cpp.obj: CXX_COMPILER__TRABALHOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/TRABALHOAED/main.cpp || cmake_object_order_depends_target_TRABALHOAED
-  DEP_FILE = CMakeFiles\TRABALHOAED.dir\main.cpp.obj.d
+build CMakeFiles/PROJETOAED.dir/main.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/main.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/src"
-  OBJECT_DIR = CMakeFiles\TRABALHOAED.dir
-  OBJECT_FILE_DIR = CMakeFiles\TRABALHOAED.dir
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir
 
-build CMakeFiles/TRABALHOAED.dir/src/Utils/FileMan.cpp.obj: CXX_COMPILER__TRABALHOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/TRABALHOAED/src/Utils/FileMan.cpp || cmake_object_order_depends_target_TRABALHOAED
-  DEP_FILE = CMakeFiles\TRABALHOAED.dir\src\Utils\FileMan.cpp.obj.d
+build CMakeFiles/PROJETOAED.dir/src/Utils/FileMan.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Utils/FileMan.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Utils\FileMan.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/src"
-  OBJECT_DIR = CMakeFiles\TRABALHOAED.dir
-  OBJECT_FILE_DIR = CMakeFiles\TRABALHOAED.dir\src\Utils
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Utils
 
-build CMakeFiles/TRABALHOAED.dir/src/Models/Uc.cpp.obj: CXX_COMPILER__TRABALHOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/TRABALHOAED/src/Models/Uc.cpp || cmake_object_order_depends_target_TRABALHOAED
-  DEP_FILE = CMakeFiles\TRABALHOAED.dir\src\Models\Uc.cpp.obj.d
+build CMakeFiles/PROJETOAED.dir/src/Models/Uc.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Models/Uc.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Models\Uc.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/src"
-  OBJECT_DIR = CMakeFiles\TRABALHOAED.dir
-  OBJECT_FILE_DIR = CMakeFiles\TRABALHOAED.dir\src\Models
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Models
 
-build CMakeFiles/TRABALHOAED.dir/src/Models/Class.cpp.obj: CXX_COMPILER__TRABALHOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/TRABALHOAED/src/Models/Class.cpp || cmake_object_order_depends_target_TRABALHOAED
-  DEP_FILE = CMakeFiles\TRABALHOAED.dir\src\Models\Class.cpp.obj.d
+build CMakeFiles/PROJETOAED.dir/src/Models/Class.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Models/Class.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Models\Class.cpp.obj.d
   FLAGS = -g -std=gnu++14
-  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/src"
-  OBJECT_DIR = CMakeFiles\TRABALHOAED.dir
-  OBJECT_FILE_DIR = CMakeFiles\TRABALHOAED.dir\src\Models
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Models
+
+build CMakeFiles/PROJETOAED.dir/src/Models/Schedule.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Models/Schedule.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Models\Schedule.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Models
+
+build CMakeFiles/PROJETOAED.dir/src/Utils/MenuMan.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Utils/MenuMan.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Utils\MenuMan.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Utils
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target TRABALHOAED
+# Link build statements for EXECUTABLE target PROJETOAED
 
 
 #############################################
-# Link the executable TRABALHOAED.exe
+# Link the executable PROJETOAED.exe
 
-build TRABALHOAED.exe: CXX_EXECUTABLE_LINKER__TRABALHOAED_Debug CMakeFiles/TRABALHOAED.dir/src/Models/Student.cpp.obj CMakeFiles/TRABALHOAED.dir/main.cpp.obj CMakeFiles/TRABALHOAED.dir/src/Utils/FileMan.cpp.obj CMakeFiles/TRABALHOAED.dir/src/Models/Uc.cpp.obj CMakeFiles/TRABALHOAED.dir/src/Models/Class.cpp.obj
+build PROJETOAED.exe: CXX_EXECUTABLE_LINKER__PROJETOAED_Debug CMakeFiles/PROJETOAED.dir/src/Models/Student.cpp.obj CMakeFiles/PROJETOAED.dir/main.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/FileMan.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Uc.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Class.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Schedule.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/MenuMan.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\TRABALHOAED.dir
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = TRABALHOAED.exe
-  TARGET_IMPLIB = libTRABALHOAED.dll.a
-  TARGET_PDB = TRABALHOAED.exe.dbg
+  TARGET_FILE = PROJETOAED.exe
+  TARGET_IMPLIB = libPROJETOAED.dll.a
+  TARGET_PDB = PROJETOAED.exe.dbg
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\TRABALHOAED\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\ProjetoAED\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -118,7 +132,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D "C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\TRABALHOAED\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\TRABALHOAED" -B"C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\TRABALHOAED\cmake-build-debug""
+  COMMAND = cmd.exe /C "cd /D "C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\ProjetoAED\cmake-build-debug" && "C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S"C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\ProjetoAED" -B"C:\Users\jpspb\OneDrive\Ambiente de Trabalho\AED praticas\ProjetoAED\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -128,7 +142,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build TRABALHOAED: phony TRABALHOAED.exe
+build PROJETOAED: phony PROJETOAED.exe
 
 # =============================================================================
 # Folder targets.
@@ -136,9 +150,9 @@ build TRABALHOAED: phony TRABALHOAED.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/cmake-build-debug
+# Folder: C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/cmake-build-debug
 
-build all: phony TRABALHOAED.exe
+build all: phony PROJETOAED.exe
 
 # =============================================================================
 # Built-in targets

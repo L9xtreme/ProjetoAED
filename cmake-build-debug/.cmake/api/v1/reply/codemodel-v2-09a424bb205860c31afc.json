@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "TRABALHOAED",
+					"name" : "PROJETOAED",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "TRABALHOAED::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-TRABALHOAED-Debug-d53979682832011b0541.json",
-					"name" : "TRABALHOAED",
+					"id" : "PROJETOAED::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PROJETOAED-Debug-a0b614805b3dbdb39ea7.json",
+					"name" : "PROJETOAED",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED/cmake-build-debug",
-		"source" : "C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/TRABALHOAED"
+		"build" : "C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/cmake-build-debug",
+		"source" : "C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED"
 	},
 	"version" : 
 	{

@@ -18,3 +18,7 @@ vector<Class> Uc::getClasses() {
 void Uc::addClass(Class ucClass) {
     this -> classes.push_back(ucClass);
 }
+
+void Uc::insertClass(Class ucClass, int pos) {
+    this -> classes[pos] = ucClass;
+}

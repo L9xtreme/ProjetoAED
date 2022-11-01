@@ -1,5 +1,5 @@
-#ifndef TRABALHOAED_STUDENT_H
-#define TRABALHOAED_STUDENT_H
+#ifndef PROJETOAED_STUDENT_H
+#define PROJETOAED_STUDENT_H
 #include <string>
 
 using namespace std;

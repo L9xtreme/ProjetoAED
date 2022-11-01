@@ -3,13 +3,22 @@
 #include <fstream>
 #include <vector>
 #include <Models/Uc.h>
+#include <Models/Schedule.h>
 
 using namespace std;
 
 
-int FileMan::UcPosInVector(vector<Uc> Ucs, const string& UcCode) {
+int FileMan::ucPosInVector(vector<Uc> Ucs, const string& UcCode) {
     for (int i = 0; i < Ucs.size(); i++) {
         if (Ucs[i].getCode() == UcCode) return i;
+    }
+
+    return -1;
+}
+
+int FileMan::classPosInVector(vector<Class> classes, const string& classCode) {
+    for (int i = 0; i < classes.size(); i++) {
+        if (classes[i].getCode() == classCode) return i;
     }
 
     return -1;
@@ -52,15 +61,12 @@ string FileMan::fileToString(const string& filePath) {
 }
 
 vector<Uc> FileMan::readUcsClassesFromFile(const string& filePath) {
-    vector<Uc> Ucs;
+    vector<Uc> ucs;
     string UcsClasses = fileToString(filePath);
 
     vector<string> lines = split(UcsClasses, '\n');
     for (const string& line: lines) {
         if (line.empty()) continue;
-
-
-        cout << "Ucs Size: " << Ucs.size() << endl;
 
         vector<string> values = split(line, ',');
         /*
@@ -68,18 +74,88 @@ vector<Uc> FileMan::readUcsClassesFromFile(const string& filePath) {
          * values[1] // Class Code
          */
 
-        int ucPos = UcPosInVector(Ucs, values[0]);
+        int ucPos = ucPosInVector(ucs, values[0]);
         if(ucPos == -1) { // Uc doesn't exist in vector
             Uc uc(values[0]);
-            Ucs.push_back(uc);
-            ucPos = Ucs.size() - 1l;
+            ucs.push_back(uc);
+            ucPos = ucs.size() - 1l;
         }
 
         // Add Class to Uc that is in `ucPos` in vector
         Class class1(values[1]);
-        Ucs[ucPos].addClass(class1);
-        cout << "Uc's Classes' Size: " << Ucs[ucPos].getClasses().size() << endl;
+        ucs[ucPos].addClass(class1);
 
     }
-    return Ucs;
+    return ucs;
+}
+
+void FileMan::readStudentClassesFromFile(vector<Uc>& ucs, const string& filePath) {
+    string studentClasses = fileToString(filePath);
+
+    vector<string> lines = split(studentClasses, '\n');
+    int i = 0;
+    for (const string& line: lines) {
+        if (line.empty()) continue;
+
+        vector<string> values = split(line, ',');
+        /*
+         * values[0] // Student Code
+         * values[1] // Student Name
+         * values[2] // Uc Code
+         * values[3] // Class Code
+         */
+
+        Student student(values[0], values[1]);
+
+        int ucPos = ucPosInVector(ucs, values[2]);
+
+        if (ucPos == -1) continue;
+
+        int classPos = classPosInVector(ucs[ucPos].getClasses(), values[3]);
+
+        if (classPos == -1) continue;
+
+        Class classToChange = ucs[ucPos].getClasses()[classPos];
+        classToChange.addStudent(student);
+        ucs[ucPos].insertClass(classToChange, classPos);
+
+        cout << "Adicionado " << ++i << " alunos de " << lines.size() << endl;
+    }
+}
+
+void FileMan::readScheduleFromFile(vector<Uc>& ucs, const string& filePath){
+    string schedulesText = fileToString(filePath);
+
+    vector<string> lines = split(schedulesText, '\n');
+    int i = 0;
+    for(const string& line: lines){
+        if(line.empty()) continue;
+
+        vector<string> values = split(line, ',');
+
+        /*
+         * values[0] = Class Code
+         * values[1] = Uc Code
+         * values[2] = Weekday
+         * values[3] = Start Hour
+         * values[4] = Duration
+         * values[5] = Type
+         */
+
+        Schedule classSchedule2(Schedule::weekdayFromString(values[2]), stod(values[3]), stod(values[4]), Schedule::typeFromString(values[5]));
+
+        int ucPos = ucPosInVector(ucs, values[1]);
+
+        if (ucPos == -1) continue;
+
+        int classPos = classPosInVector(ucs[ucPos].getClasses(), values[0]);
+
+        if (classPos == -1) continue;
+
+        Class classToChange = ucs[ucPos].getClasses()[classPos];
+        classToChange.addSchedule(classSchedule2);
+        ucs[ucPos].insertClass(classToChange, classPos);
+
+        cout << "Adicionado " << ++i << " aulas de " << lines.size() << endl;
+    }
 }
