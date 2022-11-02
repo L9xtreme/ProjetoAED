@@ -105,7 +105,7 @@ void FileMan::readStudentClassesFromFile(vector<Uc>& ucs, const string& filePath
          * values[3] // Class Code
          */
 
-        Student student(values[0], values[1]);
+        Student student(stoul(values[0]), values[1]);
 
         int ucPos = ucPosInVector(ucs, values[2]);
 
@@ -142,7 +142,7 @@ void FileMan::readScheduleFromFile(vector<Uc>& ucs, const string& filePath){
          * values[5] = Type
          */
 
-        Schedule classSchedule2(Schedule::weekdayFromString(values[2]), stod(values[3]), stod(values[4]), Schedule::typeFromString(values[5]));
+        Schedule classSchedule2(Schedule::weekdayFromString(values[2]), stod(values[3]), stod(values[4]), Schedule::typeFromString(values[5]), values[1], values[0]);
 
         int ucPos = ucPosInVector(ucs, values[1]);
 

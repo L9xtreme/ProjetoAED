@@ -1,5 +1,5 @@
 #include "Class.h"
-#include <iostream>
+
 using namespace std;
 
 Class::Class(string code){

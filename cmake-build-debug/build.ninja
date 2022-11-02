@@ -98,6 +98,13 @@ build CMakeFiles/PROJETOAED.dir/src/Utils/MenuMan.cpp.obj: CXX_COMPILER__PROJETO
   OBJECT_DIR = CMakeFiles\PROJETOAED.dir
   OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Utils
 
+build CMakeFiles/PROJETOAED.dir/src/Utils/ListMan.cpp.obj: CXX_COMPILER__PROJETOAED_Debug C$:/Users/jpspb/OneDrive/Ambiente$ de$ Trabalho/AED$ praticas/ProjetoAED/src/Utils/ListMan.cpp || cmake_object_order_depends_target_PROJETOAED
+  DEP_FILE = CMakeFiles\PROJETOAED.dir\src\Utils\ListMan.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  INCLUDES = -I"C:/Users/jpspb/OneDrive/Ambiente de Trabalho/AED praticas/ProjetoAED/src"
+  OBJECT_DIR = CMakeFiles\PROJETOAED.dir
+  OBJECT_FILE_DIR = CMakeFiles\PROJETOAED.dir\src\Utils
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PROJETOAED
@@ -106,7 +113,7 @@ build CMakeFiles/PROJETOAED.dir/src/Utils/MenuMan.cpp.obj: CXX_COMPILER__PROJETO
 #############################################
 # Link the executable PROJETOAED.exe
 
-build PROJETOAED.exe: CXX_EXECUTABLE_LINKER__PROJETOAED_Debug CMakeFiles/PROJETOAED.dir/src/Models/Student.cpp.obj CMakeFiles/PROJETOAED.dir/main.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/FileMan.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Uc.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Class.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Schedule.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/MenuMan.cpp.obj
+build PROJETOAED.exe: CXX_EXECUTABLE_LINKER__PROJETOAED_Debug CMakeFiles/PROJETOAED.dir/src/Models/Student.cpp.obj CMakeFiles/PROJETOAED.dir/main.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/FileMan.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Uc.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Class.cpp.obj CMakeFiles/PROJETOAED.dir/src/Models/Schedule.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/MenuMan.cpp.obj CMakeFiles/PROJETOAED.dir/src/Utils/ListMan.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PROJETOAED.dir

@@ -2,7 +2,7 @@
 #define PROJETOAED_UC_H
 #include <string>
 #include <vector>
-#include "Class.h"
+#include "Models/Class.h"
 
 using namespace std;
 

@@ -6,14 +6,14 @@ using namespace std;
 
 class Student {
     private:
-        string code;
+        unsigned long code;
         string name;
 
     public:
-        Student(string code, string name);
+        Student(unsigned long code, string name);
 
         string getName();
-        string getCode();
+        unsigned long getCode();
 
         string toString();
 };

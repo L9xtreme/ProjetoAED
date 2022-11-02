@@ -3,8 +3,8 @@
 #include <string>
 #include <list>
 #include <vector>
-#include "Student.h"
-#include "Schedule.h"
+#include "Models/Student.h"
+#include "Models/Schedule.h"
 
 using namespace std;
 
