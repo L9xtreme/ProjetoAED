@@ -15,6 +15,7 @@ public:
     static vector<unsigned long> getClassStudents(const vector<Uc>& ucs, const string& classCode);
     static vector<unsigned long> getUcStudents(const vector<Uc>& ucs, const string& Uc1);
     static vector<unsigned long> getYearStudents(const vector<Uc>& ucs, const char& Ano);
+    static vector<unsigned long> getStudentsTotal(const vector<Uc>& ucs);
 };
 
 

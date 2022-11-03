@@ -84,3 +84,17 @@ vector<unsigned long> ListMan::getYearStudents(const vector<Uc>& ucs, const char
     return res;
 }
 
+vector<unsigned long> ListMan::getStudentsTotal(const vector<Uc> &ucs) {
+    vector<unsigned long> res;
+    for(Uc uc : ucs){
+        for(Class ucClass : uc.getClasses()){
+            for(Student student : ucClass.getStudents()){
+                if(count(res.begin(), res.end(), student.getCode()) <= 0){
+                    res.push_back(student.getCode());
+                }
+            }
+        }
+    }
+    return res;
+}
+

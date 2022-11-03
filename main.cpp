@@ -3,6 +3,7 @@
 #include <Utils/MenuMan.h>
 #include <Utils/ListMan.h>
 #include <map>
+#include <cmath>
 
 using namespace std;
 
@@ -67,7 +68,7 @@ void displayStudentNUcs(){
     map<unsigned long, vector<string>> studentsUcs = ListMan::getStudentsUcs(ucs);
 
     for (pair<unsigned long, vector<string>> i : studentsUcs) {
-        if(i.second.size() >= n) {
+        if(i.second.size() > n) {
             cout << "O estudante " << getStudentFromCode(i.first).getName() << " tem " << i.second.size() << " UCs!" << endl;
         }
     }
@@ -126,6 +127,54 @@ void displayStudentsInYear(){
     }
 }
 
+void displayTotalStudents(){
+    vector<unsigned long> studentsTotal = ListMan::getStudentsTotal(ucs);
+    cout << "" << endl;
+    cout << "O numero total de estudantes na FEUP e: " << studentsTotal.size() << endl;
+    cout << "" << endl;
+}
+
+void displayPercentageInUC(){
+    cout << "Digite a Uc que quer a percentagem: ";
+    cin.ignore();
+    string Uc1;
+    cin >> Uc1;
+
+    vector<unsigned long> studentsTotal = ListMan::getStudentsTotal(ucs);
+    vector<unsigned long> studentsInUc = ListMan::getUcStudents(ucs, Uc1);
+
+    cout << "" << endl;
+    cout << "A percentagem de alunos na Uc " << Uc1 << " e " << ceil((((double) studentsInUc.size() / (double) studentsTotal.size())*100)*100.0)/100.0 << "%" << endl;
+    cout << "" << endl;
+}
+
+void displayPercentageInYear(){
+    cout << "Digite o ano que quer a percentagem: ";
+    cin.ignore();
+    char Ano;
+    cin >> Ano;
+
+    vector<unsigned long> studentsTotal = ListMan::getStudentsTotal(ucs);
+    vector<unsigned long> studentsInYear = ListMan::getYearStudents(ucs, Ano);
+
+    cout << "" << endl;
+    cout << "A percentagem de alunos no ano " << Ano << " e " << ceil((((double) studentsInYear.size() / (double) studentsTotal.size())*100)*100.0)/100.0 << "%" << endl;
+    cout << "" << endl;
+}
+
+void displayPercentageInClass(){
+    cout << "Digite a turma que quer a percentagem: ";
+    cin.ignore();
+    string classCode;
+    cin >> classCode;
+
+    vector<unsigned long> studentsinclass = ListMan::getClassStudents(ucs, classCode);
+    vector<unsigned long> studentsTotal = ListMan::getStudentsTotal(ucs);
+
+    cout << "" << endl;
+    cout << "A percentagem de alunos na turma " << classCode << " e " << ceil((((double) studentsinclass.size() / (double) studentsTotal.size())*100)*100.0)/100.0 << "%" << endl;
+    cout << "" << endl;
+}
 
 // Menus
 void displayLoadMenu() {
@@ -147,6 +196,7 @@ void displayLoadMenu() {
     }
 }
 
+
 void displayStudentsMenu() {
     int choice = MenuMan::createMenu("Estudantes em: ", vector<string>{"Turma", "Uc", "Ano"});
     switch(choice){
@@ -166,11 +216,47 @@ void displayStudentsMenu() {
     }
 }
 
-void displayListMenu() {
-    int choice = MenuMan::createMenu("Listagens", vector<string>{"Ocupação de turmas/ano/UC", "Horario de determinado estudante", "Estudantes em determinada turma/UC/ano", "Estudantes com mais de n UCs", "Cadeiras de determinado estudante", "Voltar atrás"});
+void displayOtherOptionsMenu() {
+    int choice = MenuMan::createMenu("Percentagem de estudantes no/a: ", vector<string>{"Uc", "Turma", "Ano"});
+    //the percentages on the year function don't add to 100% because there can be students in more than 1 year
     switch(choice){
         case 1:
-            //TODO função de ocupações
+            displayPercentageInUC();
+            break;
+        case 2:
+            displayPercentageInClass();
+            break;
+        case 3:
+            displayPercentageInYear();
+            break;
+        default:
+            cout << "Escolha uma opcao valida" << endl;
+            displayOtherOptionsMenu();
+            break;
+    }
+}
+
+void displayOptionsMenu() {
+    int choice = MenuMan::createMenu("Opcoes : ", vector<string>{"Numero de alunos na universidade", "Percentagens"});
+    switch(choice){
+        case 1:
+            displayTotalStudents();
+            break;
+        case 2:
+            displayOtherOptionsMenu();
+            break;
+        default:
+            cout << "Escolha uma opcao valida" << endl;
+            displayOptionsMenu();
+            break;
+    }
+}
+
+void displayListMenu() {
+    int choice = MenuMan::createMenu("Listagens", vector<string>{"Numero de alunos  na Universidade / Percentagens(UCs,turmas,anos)", "Horario de determinado estudante", "Estudantes em determinada turma/UC/ano", "Estudantes com mais de n UCs", "Cadeiras de determinado estudante", "Voltar atras"});
+    switch(choice){
+        case 1:
+            displayOptionsMenu();
             break;
         case 2:
             displayStudentSchedule();
@@ -209,7 +295,7 @@ void displayMainMenu() {
             case 4:
                 return;
             default:
-                cout << "Por favor, selecione uma opção valida!" << endl;
+                cout << "Por favor, selecione uma opcao valida!" << endl;
         }
     }
 }

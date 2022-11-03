@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int MenuMan::createMenu(std::string title, vector<std::string> options) {
+int MenuMan::createMenu(std::string title, vector<string> options) {
     cout << title << endl << endl;
     for (int i = 0; i < options.size(); i++) {
         cout << i + 1 << ": " << options[i] << endl;
