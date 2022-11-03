@@ -2,6 +2,7 @@
 #include <Utils/FileMan.h>
 #include <Utils/MenuMan.h>
 #include <Utils/ListMan.h>
+#include <map>
 
 using namespace std;
 
@@ -16,6 +17,16 @@ string askForFile() {
     return path;
 }
 
+Student getStudentFromCode(unsigned long studentCode) {
+    for (Uc uc: ucs) {
+        for (Class ucClass: uc.getClasses()) {
+            for (Student student: ucClass.getStudents()) {
+                if (student.getCode() == studentCode) return student;
+            }
+        }
+    }
+    return {0, "A"};
+}
 // Load Functions
 void loadUcs() {
     ucs = FileMan::readUcsClassesFromFile(askForFile());
@@ -48,6 +59,73 @@ void displayStudentSchedule() {
     }
 }
 
+void displayStudentNUcs(){
+    cout << "Digite o numero de Ucs: ";
+    cin.ignore();
+    int n;
+    cin >> n;
+    map<unsigned long, vector<string>> studentsUcs = ListMan::getStudentsUcs(ucs);
+
+    for (pair<unsigned long, vector<string>> i : studentsUcs) {
+        if(i.second.size() >= n) {
+            cout << "O estudante " << getStudentFromCode(i.first).getName() << " tem " << i.second.size() << " UCs!" << endl;
+        }
+    }
+}
+
+void displayStudentUcs() {
+    cout << "Digite o numero do estudante: ";
+    cin.ignore();
+    unsigned long studentCode;
+    cin >> studentCode;
+
+    map<unsigned long, vector<string>> studentsUcs = ListMan::getStudentsUcs(ucs);
+
+    cout << "O estudante " << getStudentFromCode(studentCode).getName() << " esta inscrito nas seguintes cadeiras:" << endl;
+    for (const string& uc: studentsUcs[studentCode]) {
+        cout << uc << endl;
+    }
+}
+
+void diplayStudentsInClass(){
+    cout << "Digite o numero da turma: ";
+    cin.ignore();
+    string classCode;
+    cin >> classCode;
+
+    vector<unsigned long> studentsinclass = ListMan::getClassStudents(ucs, classCode);
+
+    for(int i : studentsinclass){
+        cout << getStudentFromCode(i).getName() << " esta nesta turma!" << endl;
+    }
+}
+
+void displayStudentsInUc(){
+    cout << "Digite a Uc: ";
+    cin.ignore();
+    string Uc1;
+    cin >> Uc1;
+
+    vector<unsigned long> studentsInUc = ListMan::getUcStudents(ucs, Uc1);
+
+    for(int i : studentsInUc){
+        cout << getStudentFromCode(i).getName() << " esta nesta UC!" << endl;
+    }
+}
+
+void displayStudentsInYear(){
+    cout << "Digite o Ano: ";
+    cin.ignore();
+    char Ano;
+    cin >> Ano;
+
+    vector<unsigned long> studentsInYear = ListMan::getYearStudents(ucs, Ano);
+
+    for(int i : studentsInYear){
+        cout << getStudentFromCode(i).getName() << " esta neste Ano!" << endl;
+    }
+}
+
 
 // Menus
 void displayLoadMenu() {
@@ -63,14 +141,33 @@ void displayLoadMenu() {
                 loadSchedules();
                 break;
             default:
-                cout << "Por favor, selecione uma opção válida!" << endl;
+                cout << "Por favor, selecione uma opcao valida!" << endl;
                 displayLoadMenu();
                 break;
     }
 }
 
+void displayStudentsMenu() {
+    int choice = MenuMan::createMenu("Estudantes em: ", vector<string>{"Turma", "Uc", "Ano"});
+    switch(choice){
+        case 1:
+            diplayStudentsInClass();
+            break;
+        case 2:
+            displayStudentsInUc();
+            break;
+        case 3:
+            displayStudentsInYear();
+            break;
+        default:
+            cout << "Escolha uma opcao valida" << endl;
+            displayStudentsMenu();
+            break;
+    }
+}
+
 void displayListMenu() {
-    int choice = MenuMan::createMenu("Listagens", vector<string>{"Ocupação de turmas/ano/UC", "Horário de determinado estudante", "Estudantes em determinada turma/UC/ano", "Estudantes com mais de n UCs", "Voltar atrás"});
+    int choice = MenuMan::createMenu("Listagens", vector<string>{"Ocupação de turmas/ano/UC", "Horario de determinado estudante", "Estudantes em determinada turma/UC/ano", "Estudantes com mais de n UCs", "Cadeiras de determinado estudante", "Voltar atrás"});
     switch(choice){
         case 1:
             //TODO função de ocupações
@@ -79,15 +176,18 @@ void displayListMenu() {
             displayStudentSchedule();
             break;
         case 3:
-            //TODO função estudantes em determinada turma/UC/ano
+            displayStudentsMenu();
             break;
         case 4:
-            //TODO Estudantes com mais de n UCs
+            displayStudentNUcs();
             break;
         case 5:
+            displayStudentUcs();
+            break;
+        case 6:
             break;
         default:
-            cout << "Escolha uma opção válida" << endl;
+            cout << "Escolha uma opcao valida" << endl;
             displayListMenu();
             break;
     }
@@ -96,7 +196,6 @@ void displayListMenu() {
 void displayMainMenu() {
     while (true) {
         int choice = MenuMan::createMenu("Selecione o que pretende fazer", vector<string>{"Carregar Dados", "Alterar Dados", "Ver Dados", "Sair"});
-        bool exit = false;
         switch (choice) {
             case 1:
                 displayLoadMenu();
@@ -108,13 +207,10 @@ void displayMainMenu() {
                 displayListMenu();
                 break;
             case 4:
-                exit = true;
-                break;
+                return;
             default:
-                cout << "Por favor, selecione uma opção válida!" << endl;
+                cout << "Por favor, selecione uma opção valida!" << endl;
         }
-
-        if (exit) break;
     }
 }
 
