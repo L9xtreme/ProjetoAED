@@ -18,5 +18,6 @@ class Uc {
 
         void addClass(Class ucClass);
         void insertClass(Class ucClass, int pos);
+        void setClasses(vector<Class> classes);
 };
 #endif

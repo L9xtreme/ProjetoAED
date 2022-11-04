@@ -7,6 +7,13 @@
 
 using namespace std;
 
+/**
+ * Função que dá return ao index da UC que estamos a procurar no vetor com todas as UC's
+ * Time-complexity -> O(n)
+ * @param Ucs vetor com todas as ucs
+ * @param UcCode código da UC que estamos a procurar
+ * @return i (index da UC)
+ */
 
 int FileMan::ucPosInVector(vector<Uc> Ucs, const string& UcCode) {
     for (int i = 0; i < Ucs.size(); i++) {
@@ -16,6 +23,14 @@ int FileMan::ucPosInVector(vector<Uc> Ucs, const string& UcCode) {
     return -1;
 }
 
+/**
+ * Função que dá return ao index da turma que estamos a procurar no vetor com todas as turmas
+ * Time-complexity -> O(n)
+ * @param classes vetor com todas as turmas
+ * @param classCode código da turma
+ * @return i (index da turma)
+ */
+
 int FileMan::classPosInVector(vector<Class> classes, const string& classCode) {
     for (int i = 0; i < classes.size(); i++) {
         if (classes[i].getCode() == classCode) return i;
@@ -23,6 +38,14 @@ int FileMan::classPosInVector(vector<Class> classes, const string& classCode) {
 
     return -1;
 }
+
+/**
+ * Função split que vai criar e dar return a um vetor splitted com a string separada pelo delimitador
+ * Time-complexity -> O(n)
+ * @param str string que queremos dar "split"
+ * @param del delimitador
+ * @return splitted vetor com a string splitted pelo delimitador
+ */
 
 vector<string> FileMan::split(const string& str, char del) {
     vector<string> splitted;
@@ -40,6 +63,13 @@ vector<string> FileMan::split(const string& str, char del) {
 
     return splitted;
 }
+
+/**
+ * Função que a partir do caminho do ficheiro vai ler e dar return aos conteúdos deste
+ * Time-complexity -> O(1)
+ * @param filePath caminho do ficheiro
+ * @return fileText ficheiro em texto
+ */
 
 string FileMan::fileToString(const string& filePath) {
     ifstream inFile(filePath);
@@ -59,6 +89,13 @@ string FileMan::fileToString(const string& filePath) {
 
     return fileText;
 }
+
+/**
+ * Função que apartir do caminho do ficheiro (filePath) cria um vetor ucs que contém as informações de cada turma de cada UC
+ * Time-complexity -> O(n + k) (k=tamanho do for loop)
+ * @param filePath caminho do ficheiro
+ * @return ucs vetor com todas as UC's
+ */
 
 vector<Uc> FileMan::readUcsClassesFromFile(const string& filePath) {
     vector<Uc> ucs;
@@ -88,6 +125,13 @@ vector<Uc> FileMan::readUcsClassesFromFile(const string& filePath) {
     }
     return ucs;
 }
+
+/**
+ * Função que apartir do caminho do ficheiro (filePath) e do vetor com as UC's adiciona os vetores das turmas á UC correspondente
+ * Time-complexity -> O(n + k) (k=tamanho do for loop)
+ * @param ucs vetor com todas as UC's
+ * @param filePath caminho do ficheiro
+ */
 
 void FileMan::readStudentClassesFromFile(vector<Uc>& ucs, const string& filePath) {
     string studentClasses = fileToString(filePath);
@@ -122,6 +166,13 @@ void FileMan::readStudentClassesFromFile(vector<Uc>& ucs, const string& filePath
         cout << "Adicionado " << ++i << " alunos de " << lines.size() << endl;
     }
 }
+
+/**
+ * Função que apartir do caminho do ficheiro (filePath) e do vetor com as UC's adiciona os vetores das turmas com os horários á UC correspondente
+ * Time-complexity -> O(n + k) (k=tamanho do for loop)
+ * @param ucs vetor com todas as UC's
+ * @param filePath caminho do ficheiro
+ */
 
 void FileMan::readScheduleFromFile(vector<Uc>& ucs, const string& filePath){
     string schedulesText = fileToString(filePath);
@@ -159,3 +210,4 @@ void FileMan::readScheduleFromFile(vector<Uc>& ucs, const string& filePath){
         cout << "Adicionado " << ++i << " aulas de " << lines.size() << endl;
     }
 }
+

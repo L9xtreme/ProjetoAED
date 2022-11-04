@@ -22,6 +22,9 @@ class Class {
 
         void addStudent(Student student);
         void addSchedule(Schedule schedule1);
+        void removeStudent(Student student);
+        void removeStudent(unsigned long studentCode);
+        void setStudents(list<Student> students);
 };
 
 
