@@ -4,10 +4,13 @@
 #include "Utils/ListMan.h"
 #include <map>
 #include <cmath>
+#include <Utils/ChangeMan.h>
 
 using namespace std;
 
 vector<Uc> ucs;
+ChangeMan changeMan;
+
 
 // Util Functions
 
@@ -31,17 +34,6 @@ string askForFile() {
  * @param studentCode código do estudante
  * @return student nome do estudante
  */
-
-Student getStudentFromCode(unsigned long studentCode) {
-    for (Uc uc: ucs) {
-        for (Class ucClass: uc.getClasses()) {
-            for (Student student: ucClass.getStudents()) {
-                if (student.getCode() == studentCode) return student;
-            }
-        }
-    }
-    return {0, "A"};
-}
 
 // Load Functions
 
@@ -86,7 +78,7 @@ void displayStudentSchedule() {
     cin >> studentCode;
 
     vector<Schedule> studentSchedule = ListMan::getStudentSchedule(ucs, studentCode);
-    cout << "Horario do estudante " << getStudentFromCode(studentCode).getName() << "(" << to_string(studentCode) << ")" << ":" << endl;
+    cout << "Horario do estudante " << ListMan::getStudentFromCode(ucs, studentCode).getName() << "(" << to_string(studentCode) << ")" << ":" << endl;
     for (Schedule schedule: studentSchedule) {
         int horas = int(schedule.getStartHour());
         double minutos = (schedule.getStartHour() - int(schedule.getStartHour())) * 60;
@@ -110,7 +102,7 @@ void displayStudentNUcs(){
 
     for (pair<unsigned long, vector<string>> i : studentsUcs) {
         if(i.second.size() > n) {
-            cout << "O estudante " << getStudentFromCode(i.first).getName() << " tem " << i.second.size() << " UCs!" << endl;
+            cout << "O estudante " << ListMan::getStudentFromCode(ucs, i.first).getName() << " tem " << i.second.size() << " UCs!" << endl;
         }
     }
 }
@@ -128,7 +120,7 @@ void displayStudentUcs() {
 
     map<unsigned long, vector<string>> studentsUcs = ListMan::getStudentsUcs(ucs);
 
-    cout << "O estudante " << getStudentFromCode(studentCode).getName() << " esta inscrito nas seguintes cadeiras:" << endl;
+    cout << "O estudante " << ListMan::getStudentFromCode(ucs, studentCode).getName() << " esta inscrito nas seguintes cadeiras:" << endl;
     for (const string& uc: studentsUcs[studentCode]) {
         cout << uc << endl;
     }
@@ -148,7 +140,7 @@ void diplayStudentsInClass(){
     vector<unsigned long> studentsinclass = ListMan::getClassStudents(ucs, classCode);
 
     for(int i : studentsinclass){
-        cout << getStudentFromCode(i).getName() << " esta nesta turma!" << endl;
+        cout << ListMan::getStudentFromCode(ucs, i).getName() << " esta nesta turma!" << endl;
     }
 }
 
@@ -166,7 +158,7 @@ void displayStudentsInUc(){
     vector<unsigned long> studentsInUc = ListMan::getUcStudents(ucs, Uc1);
 
     for(int i : studentsInUc){
-        cout << getStudentFromCode(i).getName() << " esta nesta UC!" << endl;
+        cout << ListMan::getStudentFromCode(ucs, i).getName() << " esta nesta UC!" << endl;
     }
 }
 
@@ -184,7 +176,7 @@ void displayStudentsInYear(){
     vector<unsigned long> studentsInYear = ListMan::getYearStudents(ucs, Ano);
 
     for(int i : studentsInYear){
-        cout << getStudentFromCode(i).getName() << " esta neste Ano!" << endl;
+        cout << ListMan::getStudentFromCode(ucs, i).getName() << " esta neste Ano!" << endl;
     }
 }
 
@@ -257,11 +249,107 @@ void displayPercentageInClass(){
     cout << "" << endl;
 }
 
+/**
+ *
+ * Time-complexity -> O()
+ */
+
+void displayRemoveStudentfromClass(){
+    cout << "Digite o codigo do estudante que pretende remover: ";
+    cin.ignore();
+    unsigned long studentCode;
+    cin >> studentCode;
+
+    cout << "Digite o codigo da turma de onde pretende remover o estudante " << ListMan::getStudentFromCode(ucs, studentCode).getName() <<": ";
+    cin.ignore();
+    string classCode;
+    cin >> classCode;
+
+
+    if (!changeMan.tryRemoveStudentFromClass(ucs, studentCode, classCode)) {
+        cout << "A remocao nao e valida!" << endl;
+    } else {
+        cout << "A remocao e valida e vai ser processada no final do dia! " << endl;
+    }
+}
+
+/**
+ *
+ * Time-complexity -> O()
+ */
+
+void displayRemoveStudentfromUC(){
+    cout << "Digite o codigo do estudante que pretende remover: ";
+    cin.ignore();
+    unsigned long studentCode;
+    cin >> studentCode;
+
+    cout << "Digite o codigo da UC de onde pretende remover o estudante " << ListMan::getStudentFromCode(ucs, studentCode).getName() <<": ";
+    cin.ignore();
+    string ucCode;
+    cin >> ucCode;
+
+
+    if (!changeMan.tryRemoveStudentFromUc(ucs, studentCode, ucCode)) {
+        cout << "A remocao nao e valida!" << endl;
+    } else {
+        cout << "A remocao e valida e vai ser processada no final do dia! " << endl;
+    }
+}
+
+/**
+ *
+ * Time-complexity -> O()
+ */
+
+void displayAddStudentToUC(){
+    cout << "Digite o codigo do estudante que pretende adicionar: ";
+    cin.ignore();
+    unsigned long studentCode;
+    cin >> studentCode;
+
+    cout << "Digite o codigo da UC de onde pretende adicionar o estudante " << ListMan::getStudentFromCode(ucs, studentCode).getName() <<": ";
+    cin.ignore();
+    string ucCode;
+    cin >> ucCode;
+
+
+    if (!changeMan.tryAddStudentToUc(ucs, studentCode, ucCode)) {
+        cout << "A adicao nao e valida!" << endl;
+    } else {
+        cout << "A adicao e valida e vai ser processada no final do dia! " << endl;
+    }
+}
+
+/**
+ *
+ * Time-complexity -> O()
+ */
+
+void displayAddStudentToClass(){
+    cout << "Digite o codigo do estudante que pretende adicionar: ";
+    cin.ignore();
+    unsigned long studentCode;
+    cin >> studentCode;
+
+    cout << "Digite o codigo da turma em que quer adicionar o estudante " << ListMan::getStudentFromCode(ucs, studentCode).getName() <<": ";
+    cin.ignore();
+    string classCode;
+    cin >> classCode;
+
+
+    if (!changeMan.tryAddStudentToClass(ucs,studentCode,classCode)) {
+        cout << "A adicao nao e valida!" << endl;
+    } else {
+        cout << "A adicao e valida e vai ser processada no final do dia! " << endl;
+    }
+}
+
 // Menus
 
 /**
  * Função que cria um menu para os "carregamentos" dos ficheiros
- * Time-complexity -> O()
+ * Time-complexity -> O(n + k^3)
  */
 
 void displayLoadMenu() {
@@ -285,7 +373,7 @@ void displayLoadMenu() {
 
 /**
  * Função que cria um menu para se proceder á escolha de que função queremos executar
- * Time-complexity -> O()
+ * Time-complexity -> O(2n + k^3)
  */
 
 void displayStudentsMenu() {
@@ -309,7 +397,7 @@ void displayStudentsMenu() {
 
 /**
  * Função que cria um menu para escolher a percentagem do que queremos calcular
- * Time-complexity -> O()
+ * Time-complexity -> O(n + 2*(k^3))
  */
 
 void displayOtherOptionsMenu() {
@@ -334,7 +422,7 @@ void displayOtherOptionsMenu() {
 
 /**
  * Função que cria um "sub"-menu para escolher uma de duas opções : Numero de alunos no curso ou Percentagens
- * Time-complexity -> O()
+ * Time-complexity -> O(2n + 2*(k^3))
  */
 
 void displayOptionsMenu() {
@@ -355,7 +443,7 @@ void displayOptionsMenu() {
 
 /**
  * Função que cria um menu com todas as listagens
- * Time-complexity -> O()
+ * Time-complexity -> O(3n + 2*(k^3))
  */
 
 void displayListMenu() {
@@ -394,10 +482,10 @@ void displayRemoveMenu() {
     int choice = MenuMan::createMenu("Remoção de : ", vector<string>{"Turma ", "Uc "});
     switch(choice){
         case 1:
-
+            displayRemoveStudentfromClass();
             break;
         case 2:
-            //TODO Remover estudante de uma UC.
+            displayRemoveStudentfromUC();
             break;
         default:
             cout << "Escolha uma opcao valida" << endl;
@@ -406,9 +494,25 @@ void displayRemoveMenu() {
     }
 }
 
+void displayAddMenu() {
+    int choice = MenuMan::createMenu("Adicao de : ", vector<string>{"Turma ", "Uc "});
+    switch(choice){
+        case 1:
+            displayAddStudentToClass();
+            break;
+        case 2:
+            displayAddStudentToUC();
+            break;
+        default:
+            cout << "Escolha uma opcao valida" << endl;
+            displayAddMenu();
+            break;
+    }
+}
+
 /**
  * Função que cria um menu para o utilizador escolher que alteração quer fazer
- * Time-complexity -> O()
+ * Time-complexity -> O(n + ) createmenu complexidade mais complexidade da maior função
  */
 
 
@@ -419,7 +523,7 @@ void displayChangeMenu() {
             displayRemoveMenu();
             break;
         case 2:
-            //TODO Adicionar estudante a uma turma/UC.
+            displayAddMenu();
             break;
         case 3:
             //TODO Alterar a turma/UC de um estudante.
@@ -441,7 +545,7 @@ void displayChangeMenu() {
 
 void displayMainMenu() {
     while (true) {
-        int choice = MenuMan::createMenu("Selecione o que pretende fazer", vector<string>{"Carregar Dados", "Alterar Dados", "Ver Dados", "Sair"});
+        int choice = MenuMan::createMenu("Selecione o que pretende fazer", vector<string>{"Carregar Dados", "Alterar Dados", "Ver Dados", "Simular proximo dia", "Sair"});
         switch (choice) {
             case 1:
                 displayLoadMenu();
@@ -453,6 +557,9 @@ void displayMainMenu() {
                 displayListMenu();
                 break;
             case 4:
+                changeMan.processQueue(ucs);
+                break;
+            case 5:
                 return;
             default:
                 cout << "Por favor, selecione uma opcao valida!" << endl;
@@ -462,6 +569,7 @@ void displayMainMenu() {
 
 
 int main(int argc, char* argv[]) {
+    changeMan = ChangeMan();
     displayMainMenu();
     return 0;
 }

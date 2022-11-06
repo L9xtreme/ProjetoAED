@@ -3,6 +3,18 @@
 
 using namespace std;
 
+
+Student ListMan::getStudentFromCode(const vector<Uc>& ucs, unsigned long studentCode) {
+    for (Uc uc: ucs) {
+        for (Class ucClass: uc.getClasses()) {
+            for (Student student: ucClass.getStudents()) {
+                if (student.getCode() == studentCode) return student;
+            }
+        }
+    }
+    return {0, "A"};
+}
+
 /**
  * Função que a partir do vetor de UC's e do código do estudante adiciona a um vetor res os horários desse estudante numa UC em que ele esteja inscrito
  * Time-complexity -> O(n^4)
@@ -144,3 +156,16 @@ vector<unsigned long> ListMan::getStudentsTotal(const vector<Uc> &ucs) {
     return res;
 }
 
+
+bool ListMan::areSchedulesCompatible(Schedule schedule1, Schedule schedule2) {
+    if (schedule1.getWeekday() == schedule2.getWeekday()) {
+        if ((schedule1.getStartHour() > schedule2.getStartHour() && schedule1.getStartHour() < schedule2.getEndHour()) || (schedule1.getEndHour() > schedule2.getStartHour() && schedule1.getEndHour() < schedule2.getEndHour())) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+    return true;
+}

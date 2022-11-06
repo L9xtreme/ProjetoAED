@@ -11,14 +11,20 @@ using namespace std;
 class ChangeMan {
     private:
         queue<Change> changes;
+        static const int CLASSCAP = 25;
 
-        void removeStudentFromClass(vector<Uc> ucs, unsigned long studentCode, string classCode);
-        void removeStudentFromUc(vector<Uc> ucs, unsigned long studentCode, string ucCode);
+        void addStudentToClass(vector<Uc> ucs, Student student, const string& classCode);
+        void addStudentToUC(vector<Uc> ucs, Student student, const string& ucCode, const string& classCode);
+        void removeStudentFromClass(vector<Uc> ucs, unsigned long studentCode, const string& classCode);
+        void removeStudentFromUc(vector<Uc> ucs, unsigned long studentCode, const string& ucCode);
 
     public:
         ChangeMan();
-        bool tryRemoveStudentFromClass(vector<Uc> ucs, unsigned long studentCode, string classCode);
-        bool tryRemoveStudentFromUc(vector<Uc> ucs, unsigned long studentCode, string ucCode);
+        bool tryAddStudentToClass(const vector<Uc>& ucs, Student student, const string& classCode);
+        bool tryAddStudentToUc(const vector<Uc>& ucs, Student student, const string& ucCode);
+        bool tryRemoveStudentFromClass(const vector<Uc>& ucs, unsigned long studentCode, const string& classCode);
+        bool tryRemoveStudentFromUc(const vector<Uc>& ucs, unsigned long studentCode, const string& ucCode);
+        void processQueue(vector<Uc> ucs);
 };
 
 

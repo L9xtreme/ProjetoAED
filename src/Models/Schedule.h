@@ -23,6 +23,7 @@ class Schedule {
         WeekDay getWeekday();
         double getStartHour();
         double getDuration();
+        double getEndHour();
         ScheduleType getType();
         string getUcCode();
         string getClassCode();

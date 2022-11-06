@@ -10,12 +10,14 @@ using namespace std;
 
 class ListMan {
 public:
+    static Student getStudentFromCode(const vector<Uc>& ucs, unsigned long studentCode);
     static vector<Schedule> getStudentSchedule(const vector<Uc>& ucs, unsigned long studentCode);
     static map<unsigned long, vector<string>> getStudentsUcs(const vector<Uc>& ucs);
     static vector<unsigned long> getClassStudents(const vector<Uc>& ucs, const string& classCode);
     static vector<unsigned long> getUcStudents(const vector<Uc>& ucs, const string& Uc1);
     static vector<unsigned long> getYearStudents(const vector<Uc>& ucs, const char& Ano);
     static vector<unsigned long> getStudentsTotal(const vector<Uc>& ucs);
+    static bool areSchedulesCompatible(Schedule schedule1, Schedule schedule2);
 };
 
 

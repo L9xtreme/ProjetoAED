@@ -10,6 +10,7 @@ class Student {
         string name;
 
     public:
+        Student();
         Student(unsigned long code, string name);
 
         string getName();

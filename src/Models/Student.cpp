@@ -8,6 +8,8 @@ using namespace std;
  * @param name
  */
 
+Student::Student() {}
+
 Student::Student(unsigned long code, string name) {
     this -> code = code;
     this -> name = name;

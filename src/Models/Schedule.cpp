@@ -52,6 +52,10 @@ double Schedule::getDuration() {
     return this -> duration;
 }
 
+double Schedule::getEndHour() {
+    return this->getStartHour() + this->getDuration();
+}
+
 /**
  * Getters
  * Time-complexity -> O(1)
